@@ -44,3 +44,15 @@ textarea{
   background-color: #7d7;
   color: white;
 }
+
+.saveBtn {
+  border-left: 1px solid black;
+  border-top-right-radius: 15px;
+  background-color: #06aed5;
+  color: white;
+}
+
+.saveBtn i:hover {
+  font-size: 20px;
+  transition: all 0.3 ease-in-out;
+} 

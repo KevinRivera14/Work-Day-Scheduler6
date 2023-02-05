@@ -1,22 +1,22 @@
 $(function () {
 
   
-  // i used the day.js to represent the current hour 
+  // i used the day.js to get  the current hour 
   const currentHour = dayjs().hour();
 
   
-  // below is for any saved taks that i have, and create empty array's if none are present 
+  // below is for any saved task's  and create empty array's if none are available 
   const savedTasks = JSON.parse(window.localStorage.getItem("savedTasks")) || [];
 
   
-  // below will format today's current date 
+  // below will  show the format today's current date 
   $("#currentDay").text(dayjs().format("dddd, D MMMM"));
 
   //dynamically creating time blocks in for loop, appending to container
   function createRows() {
     for (let i = 9; i < 18; i++) {
       const container = $(".container-lg")
-      //converting military format to am/pm
+      //Below is showing  military time convert to am/pm
       const fromMilitary = i <= 12 ? i + "AM" : (i - 12) + "PM"
       let row = $("<div>");
       let hourCol = $("<div>");
@@ -31,10 +31,10 @@ $(function () {
     }
   }
 
-  //invoke it before the rest
+  // below will invoke it before the rest
   createRows();
 
-  //save task
+  // below will show the save task
   $("body").on("click", ".saveBtn", function (e) {
     e.preventDefault();
     //get id hour from parent div
@@ -50,12 +50,12 @@ $(function () {
     }
   })
 
-  //coloring time block rows
+  // below will show the color-coded time block rows
   $(".time-block").each(function () {
-    // getting hour id of parent, splitting to have only number 
+    //  Below will show the getting hour id of parent, splitting to have only number 
     let hour = $(this).attr("id");
     hour = hour.split(("-"))[1];
-    //coloring
+    // Bellow will show the coloring
     if (parseInt(hour) === currentHour) {
       $(this).addClass("present")
     } else if (parseInt(hour) < currentHour) {
@@ -64,7 +64,8 @@ $(function () {
       $(this).addClass("future")
     }
   })
-//dynamically display saved tasks using for loop and comparing hour id
+
+  
   $(".description").each(function () {
     const id = $(this).parent().attr("id");
     for (let i = 0; i < savedTasks.length; i++) {
